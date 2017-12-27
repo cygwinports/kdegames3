@@ -1,0 +1,177 @@
+inherit kde3
+
+NAME="kdegames3"
+VERSION=3.5.10
+RELEASE=11
+CATEGORY="Games"
+SUMMARY="KDE 3 games suite"
+DESCRIPTION="This is a compilation of various games for KDE 3."
+
+PATCH_URI+="
+	fedora/kdegames-3.5.10-trademarks.patch
+	fedora/kdegames-3.5.10-ftbfs.patch
+	3.5.9-no-undefined.patch
+	3.5.9-exeext.patch
+"
+
+# kbattleship is renamed as knavalbattle
+# ktron is replaced by ksnakeduel
+# kwin4 is replaced by kfourinline
+DO_NOT_COMPILE="katomic kbattleship kblackbox kbounce kgoldrunner kjumpingcube
+                klickety klines kmahjongg kmines knetwalk kolf konquest kpat kpoker
+                kreversi ksame kshisen kspaceduel ktron ktuberling kwin4 lskat"
+
+PKG_NAMES="${NAME} libkdegames1 libkdegames1-devel libatlantik1 libatlantik1-devel
+	atlantik kasteroids kbackgammon kenolaba kfouleggs ksirtet ksmiletris
+	ksnake kboxpush"
+kdegames3_REQUIRES="atlantik kasteroids kbackgammon kenolaba kfouleggs ksirtet ksmiletris ksnake kboxpush"
+atlantik_SUMMARY="KDE atlantiK board game"
+atlantik_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/atlantik.exe
+	usr/share/applications/kde/atlantik.desktop
+	usr/share/apps/atlantik/
+	usr/share/doc/HTML/en/atlantik/
+	usr/share/doc/atlantik/
+	usr/share/icons/hicolor/*/apps/atlantik.png
+"
+libatlantik1_CATEGORY="Libs"
+libatlantik1_SUMMARY="KDE atlantiK board game library (runtime)"
+libatlantik1_CONTENTS="
+	usr/bin/cygatlanti*-1.dll
+	usr/lib/kde3/kio_atlantik.*
+	usr/share/services/atlantik.protocol
+"
+libatlantik1_devel_CATEGORY="Libs"
+libatlantik1_devel_OBSOLETES="atlantik-devel"
+libatlantik1_devel_SUMMARY="KDE atlantiK board game library (development)"
+libatlantik1_devel_CONTENTS="
+	usr/include/kde3/atlanti*/
+	usr/lib/kde3/devel/libatlanti*
+	usr/lib/libatlanti*.la
+"
+kasteroids_SUMMARY="KDE asteroids game"
+kasteroids_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/kasteroids.exe
+	usr/share/applications/kde/kasteroids.desktop
+	usr/share/apps/kasteroids/
+	usr/share/config.kcfg/kasteroids.kcfg
+	usr/share/doc/HTML/en/kasteroids/
+	usr/share/doc/kasteroids/
+	usr/share/icons/hicolor/*/apps/kasteroids.png
+"
+kbackgammon_SUMMARY="KDE Backgammon"
+kbackgammon_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/kbackgammon.exe
+	usr/share/applications/kde/kbackgammon.desktop
+	usr/share/apps/kbackgammon/
+	usr/share/doc/HTML/en/kbackgammon/
+	usr/share/doc/kbackgammon/
+	usr/share/icons/hicolor/*/apps/kbackgammon.png
+	usr/share/icons/hicolor/*/apps/kbackgammon_engine.png
+"
+kenolaba_SUMMARY="KDE Abalone game"
+kenolaba_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/kenolaba.exe
+	usr/share/applications/kde/kenolaba.desktop
+	usr/share/apps/kenolaba/
+	usr/share/doc/HTML/en/kenolaba/
+	usr/share/doc/kenolaba/
+	usr/share/icons/hicolor/*/apps/kenolaba.png
+"
+kfouleggs_SUMMARY="KDE Puyo-puyo game"
+kfouleggs_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/kfouleggs.exe
+	usr/share/applications/kde/kfouleggs.desktop
+	usr/share/apps/kfouleggs/
+	usr/share/config.kcfg/kfouleggs.kcfg
+	usr/share/doc/HTML/en/kfouleggs/
+	usr/share/doc/kfouleggs/
+	usr/share/icons/hicolor/*/apps/kfouleggs.png
+"
+kpoker_SUMMARY="KDE poker game"
+kpoker_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/kpoker.exe
+	usr/share/applications/kde/kpoker.desktop
+	usr/share/apps/kpoker/
+	usr/share/doc/HTML/en/kpoker/
+	usr/share/doc/kpoker/
+	usr/share/icons/hicolor/*/apps/kpoker.png
+"
+ksame_SUMMARY="KDE Same game"
+ksame_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/ksame.exe
+	usr/share/applications/kde/ksame.desktop
+	usr/share/apps/ksame/
+	usr/share/doc/HTML/en/ksame/
+	usr/share/doc/ksame/
+	usr/share/icons/hicolor/*/apps/ksame.png
+"
+ksirtet_SUMMARY="KDE falling blocks game"
+ksirtet_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/ksirtet.exe
+	usr/share/applications/kde/ksirtet.desktop
+	usr/share/apps/ksirtet/
+	usr/share/config.kcfg/ksirtet.kcfg
+	usr/share/doc/HTML/en/ksirtet/
+	usr/share/doc/ksirtet/
+	usr/share/icons/hicolor/*/apps/ksirtet.png
+"
+ksmiletris_SUMMARY="KDE falling blocks game variant"
+ksmiletris_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/ksmiletris.exe
+	usr/share/applications/kde/ksmiletris.desktop
+	usr/share/apps/ksmiletris/
+	usr/share/doc/HTML/en/ksmiletris/
+	usr/share/doc/ksmiletris/
+	usr/share/icons/hicolor/*/apps/ksmiletris.png
+"
+ksnake_SUMMARY="KDE Snake game"
+ksnake_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/ksnake.exe
+	usr/share/applications/kde/ksnake.desktop
+	usr/share/apps/ksnake/
+	usr/share/config.kcfg/ksnake.kcfg
+	usr/share/doc/HTML/en/ksnake/
+	usr/share/doc/ksnake/
+	usr/share/icons/hicolor/*/apps/ksnake.png
+"
+kboxpush_OBSOLETES="ksokoban"
+kboxpush_SUMMARY="KDE box pushing game"
+kboxpush_DOCS="ksokoban/AUTHORS ksokoban/NEWS ksokoban/README ksokoban/TODO"
+kboxpush_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/ksokoban.exe
+	usr/share/applications/kde/ksokoban.desktop
+	usr/share/doc/HTML/en/ksokoban/
+	usr/share/icons/hicolor/*/apps/ksokoban.png
+"
+libkdegames1_CATEGORY="Libs"
+libkdegames1_SUMMARY="KDE 3 game library (runtime)"
+libkdegames1_CONTENTS="
+	etc/postinstall/${NAME}.sh
+	usr/bin/cygkdegames-1.dll
+	usr/share/apps/carddecks/
+	usr/share/apps/kdegames/
+	usr/share/doc/${NAME}
+	usr/share/icons/crystalsvg/*/actions/endturn.png
+	usr/share/icons/crystalsvg/*/actions/highscore.png
+	usr/share/icons/crystalsvg/*/actions/roll.png
+"
+libkdegames1_devel_CATEGORY="Libs"
+libkdegames1_devel_SUMMARY="KDE 3 game library (development)"
+libkdegames1_devel_CONTENTS="
+	usr/include/kde3/*.h
+	usr/include/kde3/kgame/
+	usr/lib/kde3/devel/libkdegames.dll.a
+	usr/lib/libkdegames.la
+"
